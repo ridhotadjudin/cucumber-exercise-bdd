@@ -13,16 +13,15 @@ public class Dashboard {
 		this.driver = driver;
 	}
 	
-	@FindBy(linkText = "CRUD Builder" )
+	@FindBy(xpath = "//span[normalize-space()='CRUD Builder']")
 	private WebElement btnCrudBuilder;
 	
 	@FindBy(xpath = "//span[@class='hidden-xs']" )
 	private WebElement username;
 	
-	public CrudBuilderPage clickCrudBuilder(){
+	public CrudPage clickCrudPage(){
 		btnCrudBuilder.click();
-		CrudBuilderPage crudBuilder = PageFactory.initElements(driver, CrudBuilderPage.class);
-		return crudBuilder;
+		return PageFactory.initElements(driver, CrudPage.class);
 	}
 
 	public String getUsername() {

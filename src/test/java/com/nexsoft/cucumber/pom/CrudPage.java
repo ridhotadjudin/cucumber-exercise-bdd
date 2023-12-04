@@ -6,16 +6,25 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
 
-public class CrudBuilderPage {
+public class CrudPage {
 
 	protected WebDriver driver;
 	
 	@FindBy(xpath = "//tbody[@id='tbody_crud']/tr")
 	List<WebElement> lstTable;
 	
-	public CrudBuilderPage(WebDriver driver) {
+	@FindBy(xpath = "a[href='http://localhost:80/cicool/administrator/absensi']")
+	private WebElement clickAbsensi;
+	
+	public CrudPage(WebDriver driver) {
 		this.driver=driver;
+	}
+	
+	public AbsensiPage clickAbsensiPage() {
+		clickAbsensi.click();
+		return PageFactory.initElements(driver, AbsensiPage.class);
 	}
 
 	public void clickSeeButtonWithTitle(String title) {
